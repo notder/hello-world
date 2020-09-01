@@ -1,19 +1,36 @@
 pipeline {
     agent any
+    environment {
+        CI = 'true'
+    }
     stages {
-        stage('Example Build') {
+        stage('Build') {
             steps {
                 echo 'Hello World'
                 echo 'test auto scan'
+                sh 'npm install'
             }
         }
-        stage('Example Deploy') {
+        stage('Test') {
+            steps {
+                echo 'Test'
+                sh 'npm test'
+            }
+        }
+        stage('Deploy Develop') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo 'Deploying on develop'
+            }
+        }
+        stage('Deploy Master') {
             when {
                 branch 'master'
             }
             steps {
-                echo 'Deploying'
-                echo 'on master'
+                echo 'Deploying on master'
             }
         }
     }
