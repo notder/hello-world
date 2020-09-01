@@ -4,6 +4,7 @@ pipeline {
         stage('Example Build') {
             steps {
                 echo 'Hello World'
+                echo 'test auto scan'
             }
         }
         stage('Example Deploy') {
@@ -12,6 +13,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying'
+                echo 'on master'
             }
         }
     }
