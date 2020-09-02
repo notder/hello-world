@@ -25,6 +25,14 @@ pipeline {
                 echo 'Deploying on develop'
             }
         }
+        stage('Deploy Staging') {
+            when {
+                branch 'release*'
+            }
+            steps {
+                echo 'Deploying on staging'
+            }
+        }
         stage('Deploy Master') {
             when {
                 branch 'master'
