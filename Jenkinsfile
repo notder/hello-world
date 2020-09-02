@@ -1,12 +1,13 @@
 pipeline {
     agent any
     environment {
-        CI = 'true'
+        CI          = 'true'
+        USER        = credentials('palm-travel-frontend-dev-user')
+        SERVER      = credentials('palm-travel-frontend-dev-ip')
     }
     stages {
         stage('Build') {
             steps {
-                echo 'Hello World'
                 echo 'test auto scan'
                 sh 'npm install'
             }
