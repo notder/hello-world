@@ -43,4 +43,24 @@ pipeline {
             }
         }
     }
+    post { 
+        always { 
+            echo 'Build result'
+        }
+        success {
+            echo 'build success'
+            // slackSend channel: '#devops',
+            //       color: 'good',
+            //       message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+            // mail to: 'thada.p@blockfint.com',
+            //     subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            //     body: "Something is wrong with ${env.BUILD_URL}"
+        }
+        failure {
+            echo 'Build failed'
+        }
+        aborted {
+            echo 'Build abort'
+        }
+    }
 }
